@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
 
 :root {
   --background: rgb(232, 245, 233);
@@ -162,4 +163,32 @@ h1, h2, h3, h4, h5, h6 {
 }
 button[submit-btn] span, button[submit-btn] svg {
   color: #ffffff !important;
+}
+
+@keyframes radarSweep {
+  0% {
+    left: 0%;
+    opacity: 0.1;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    left: 100%;
+    opacity: 0.1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

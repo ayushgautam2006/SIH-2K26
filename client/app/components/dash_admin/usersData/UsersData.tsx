@@ -9,11 +9,10 @@ import {
   Search,
   RefreshCw,
   AlertTriangle,
-  Radio,
   Phone
 } from "lucide-react";
 
-export default function AdminDashboardPanel() {
+export default function UsersData() {
   const [usersList, setUsersList] = useState<any[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [isLoadingUsers, setIsLoadingUsers] = useState(false);
@@ -53,22 +52,7 @@ export default function AdminDashboardPanel() {
   });
 
   return (
-    <div className="space-y-10">
-      {/* Header Title */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <div>
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full neu-flat text-emerald-400 text-[10px] font-bold uppercase tracking-wider mb-3">
-            <Radio className="h-3.5 w-3.5 animate-pulse" /> Admin Mode Active
-          </div>
-          <h2 className="text-3xl font-extrabold text-white tracking-tight uppercase">
-            Registered Coordinators Console
-          </h2>
-          <p className="text-slate-400 text-xs mt-1">
-            Manage registry records, review authentication logs, and audit credentials.
-          </p>
-        </div>
-      </div>
-
+    <div className="space-y-8 animate-[fadeIn_0.5s_ease-out]">
       {/* Admin Stats Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-6xl w-full">
         {/* Total Registered */}
@@ -162,7 +146,7 @@ export default function AdminDashboardPanel() {
           <div className="overflow-x-auto rounded-xl neu-sunken">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="bg-slate-900/50 text-[10px] font-bold text-slate-400 uppercase tracking-widest border-b border-slate-800">
+                <tr className="bg-green-800/10 text-[10px] font-bold text-slate-400 uppercase tracking-widest border-b border-green-200">
                   <th className="py-4 px-6">Name</th>
                   <th className="py-4 px-6">Email Address</th>
                   <th className="py-4 px-6">Phone Connection</th>
@@ -171,10 +155,10 @@ export default function AdminDashboardPanel() {
                   <th className="py-4 px-6">Joined Date</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800/40 text-xs text-slate-300">
+              <tbody className="divide-y divide-green-200/40 text-xs text-slate-300">
                 {filteredUsers.length > 0 ? (
                   filteredUsers.map((user) => (
-                    <tr key={user.id} className="hover:bg-slate-800/20 transition-colors">
+                    <tr key={user.id} className="hover:bg-green-800/5 transition-colors">
                       <td className="py-4 px-6 font-bold text-slate-100 uppercase tracking-wide">
                         {user.name || "N/A"}
                       </td>

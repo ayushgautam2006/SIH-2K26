@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Outfit, DM_Mono } from "next/font/google";
 import "./globals.css";
+import "leaflet/dist/leaflet.css";
 import { Providers } from "./providers";
 
 const outfit = Outfit({

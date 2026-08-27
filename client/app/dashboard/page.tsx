@@ -4,7 +4,7 @@ import { useSession, signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { Shield, LogOut } from "lucide-react";
-import AdminDashboardPanel from "@/app/components/dash_admin/DashboardPanel";
+import LoginPanel from "@/app/components/dash_admin/loginpanel/page";
 import UserDashboardPanel from "@/app/components/dash_user/DashboardPanel";
 
 export default function DashboardPage() {
@@ -21,7 +21,7 @@ export default function DashboardPage() {
 
   if (status === "loading") {
     return (
-      <div className="flex h-screen items-center justify-center bg-slate-950 text-white">
+      <div className="flex h-screen items-center justify-center bg-background text-white">
         <div className="flex flex-col items-center gap-4">
           <div className="h-12 w-12 animate-spin rounded-full border-4 border-emerald-500 border-t-transparent"></div>
           <p className="text-slate-400 animate-pulse text-sm font-bold uppercase tracking-wider">Securing platform connection...</p>
@@ -33,7 +33,7 @@ export default function DashboardPage() {
   if (!session) return null;
 
   return (
-    <div className="min-h-screen bg-slate-900 text-slate-100 flex flex-col font-sans">
+    <div className="min-h-screen bg-background text-slate-100 flex flex-col font-sans">
       {/* Header Bar */}
       <header className="neu-flat sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
@@ -72,7 +72,7 @@ export default function DashboardPage() {
       {/* Main Content Area */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {isAdmin ? (
-          <AdminDashboardPanel />
+          <LoginPanel />
         ) : (
           <UserDashboardPanel />
         )}

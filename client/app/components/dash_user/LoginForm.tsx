@@ -136,7 +136,7 @@ export default function UserLoginForm({ callbackUrl, registeredEmail }: UserLogi
       {/* Divider */}
       <div className="relative my-7 flex items-center justify-center">
         <div className="w-full border-t border-slate-800/40" />
-        <span className="absolute bg-slate-900 px-3 text-[10px] text-slate-500 font-bold uppercase tracking-widest">
+        <span className="absolute bg-background px-3 text-[10px] text-slate-500 font-bold uppercase tracking-widest">
           Or Use Credentials
         </span>
       </div>
