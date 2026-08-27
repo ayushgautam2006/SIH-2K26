@@ -1,26 +1,165 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: rgb(232, 245, 233);
+  --foreground: #0e2213;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: var(--font-outfit);
+  --font-mono: var(--font-dm-mono);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Neumorphic Styles for Light Mint Green Mode (Base Color: rgb(232, 245, 233) / #e8f5e9) */
+.neu-bg {
+  background-color: rgb(232, 245, 233);
+}
+
+.neu-flat {
+  background: rgb(232, 245, 233);
+  box-shadow: 6px 6px 12px #c5d5c6, -6px -6px 12px #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.neu-flat-interactive {
+  background: rgb(232, 245, 233);
+  box-shadow: 6px 6px 12px #c5d5c6, -6px -6px 12px #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.neu-flat-interactive:hover {
+  box-shadow: 4px 4px 8px #c5d5c6, -4px -4px 8px #ffffff;
+  transform: translateY(-1px);
+}
+
+.neu-flat-interactive:active {
+  box-shadow: inset 4px 4px 8px #c5d5c6, inset -4px -4px 8px #ffffff;
+  transform: translateY(0);
+}
+
+.neu-sunken {
+  background: #dceada;
+  box-shadow: inset 5px 5px 10px #b2c2b3, inset -5px -5px 10px #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.neu-sunken-focus:focus-within {
+  box-shadow: inset 5px 5px 10px #b2c2b3, inset -5px -5px 10px #ffffff, 0 0 0 1px rgba(27, 94, 32, 0.3);
+}
+
+.neu-convex {
+  background: linear-gradient(145deg, #f9fffb, #d1ddd1);
+  box-shadow: 6px 6px 12px #c5d5c6, -6px -6px 12px #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.neu-concave {
+  background: linear-gradient(145deg, #d1ddd1, #f9fffb);
+  box-shadow: 6px 6px 12px #c5d5c6, -6px -6px 12px #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+/* Green Accent Neumorphic Styles (using #1b5e20 for dark bold button surface) */
+.neu-green-flat {
+  background: #1b5e20;
+  box-shadow: 4px 4px 8px #a8c1aa, -4px -4px 8px #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.2s ease-in-out;
+}
+
+.neu-green-flat:hover {
+  background: #154c1a;
+  box-shadow: 3px 3px 6px #a8c1aa, -3px -3px 6px #ffffff;
+  transform: translateY(-1px);
+}
+
+.neu-green-flat:active {
+  background: #0f3612;
+  box-shadow: inset 3px 3px 6px #a8c1aa, inset -3px -3px 6px #ffffff;
+  transform: translateY(0);
+}
+
+.neu-green-sunken {
+  background: #1b5e20;
+  box-shadow: inset 4px 4px 8px #0f3612, inset -4px -4px 8px #2d8234;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+/* Custom styles for tab segmentation */
+.neu-tabs {
+  background: #dceada;
+  box-shadow: inset 4px 4px 8px #b2c2b3, inset -4px -4px 8px #ffffff;
+  padding: 4px;
+}
+
+.neu-tab-active {
+  background: rgb(232, 245, 233);
+  box-shadow: 3px 3px 6px #c5d5c6, -3px -3px 6px #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+/* ============================================================== */
+/* LIGHT MODE TEXT READABILITY OVERRIDES                          */
+/* ============================================================== */
+
+/* Force clean dark-green text inside inputs and selects */
+input, select {
+  color: #0b1a0e !important;
+}
+input::placeholder {
+  color: #7b8e7e !important;
+}
+
+/* Headers and Titles */
+h1, h2, h3, h4, h5, h6 {
+  color: #1b5e20 !important;
+}
+
+/* General slate utility color override mappings to ensure contrast on light green */
+.text-slate-100 {
+  color: #0e2213 !important;
+}
+.text-slate-200 {
+  color: #15321c !important;
+}
+.text-slate-300 {
+  color: #1b4125 !important;
+}
+.text-slate-400 {
+  color: #275633 !important;
+}
+.text-slate-500 {
+  color: #4b6b52 !important;
+}
+.text-slate-600 {
+  color: #0e2213 !important;
+}
+.placeholder-slate-655::placeholder {
+  color: #7b8e7e !important;
+}
+.placeholder-slate-600::placeholder {
+  color: #7b8e7e !important;
+}
+.placeholder-slate-650::placeholder {
+  color: #7b8e7e !important;
+}
+.text-white {
+  color: #0e2213 !important;
+}
+
+/* Keep white text inside bold forest green buttons */
+.neu-green-flat span, .neu-green-flat svg {
+  color: #ffffff !important;
+}
+button[submit-btn] span, button[submit-btn] svg {
+  color: #ffffff !important;
 }
