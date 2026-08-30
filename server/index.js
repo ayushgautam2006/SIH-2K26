@@ -12,9 +12,7 @@ import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
 dotenv.config({ path: path.resolve(__dirname, "../.env") });
-
 const app = express();
 
 // Middleware
@@ -59,7 +57,7 @@ app.post("/api/incidents", async (req, res) => {
         if (!name || latitude === undefined || longitude === undefined || !mobileNumber) {
             return res.status(400).json({ error: "Name, latitude, longitude, and mobileNumber are required fields" });
         }
-        
+
         const newIncident = new Incident({
             name,
             latitude: Number(latitude),
@@ -68,7 +66,7 @@ app.post("/api/incidents", async (req, res) => {
             mobileNumber,
             notes
         });
-        
+
         await newIncident.save();
         console.log(`[Incident Reported] Name: ${name}, Mobile: ${mobileNumber}`);
         res.status(201).json({ success: true, data: newIncident });
