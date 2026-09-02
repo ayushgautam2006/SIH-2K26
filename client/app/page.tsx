@@ -38,14 +38,14 @@ export default function Home() {
             href="/login"
             className="flex items-center justify-center gap-2 neu-green-flat text-white font-bold px-8 py-4 rounded-xl cursor-pointer"
           >
-            <span>Enter Command Portal</span>
+            <span>Sign In/ Sign Up</span>
             <ArrowRight className="h-5 w-5" />
           </Link>
           <Link
             href="/register"
             className="flex items-center justify-center gap-2 neu-flat-interactive text-slate-300 hover:text-white font-bold px-8 py-4 rounded-xl cursor-pointer"
           >
-            <span>Register Agency Coordinator</span>
+            <span>Register</span>
           </Link>
         </div>
       </main>
