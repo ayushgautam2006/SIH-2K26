@@ -93,14 +93,24 @@ export const authOptions: AuthOptions = {
       if (user) {
         token.id = user.id;
         token.role = (user as any).role || "user";
+        token.phone = (user as any).phone || null;
       }
       return token;
     },
     async session({ session, token }) {
       if (session.user) {
-        const sessionUser = session.user as { id?: string; name?: string | null; email?: string | null; image?: string | null; role?: string };
+        const sessionUser = session.user as { id?: string; name?: string | null; email?: string | null; image?: string | null; role?: string; phone?: string | null };
         sessionUser.id = token.id as string;
         sessionUser.role = token.role as string;
+
+        const dbUser = token.id
+          ? await prisma.user.findUnique({
+              where: { id: token.id as string },
+              select: { phone: true },
+            })
+          : null;
+
+        sessionUser.phone = dbUser?.phone || (token.phone as string | null) || null;
       }
       return session;
     },
