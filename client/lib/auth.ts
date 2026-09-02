@@ -109,7 +109,7 @@ export const authOptions: AuthOptions = {
         sessionUser.id = token.id as string;
         sessionUser.role = token.role as string;
 
-        const dbUser = token.id
+        const dbUser = token.id && token.id !== "admin"
           ? await prisma.user.findUnique({
               where: { id: token.id as string },
               select: { phone: true },

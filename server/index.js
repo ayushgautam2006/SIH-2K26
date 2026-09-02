@@ -16,7 +16,8 @@ const __dirname = path.dirname(__filename);
 dotenv.config({ path: path.resolve(__dirname, "../.env") });
 const app = express();
 
-app.use(cors());
+const allowedOrigins = ["http://localhost:3000", process.env.FRONTEND_URL].filter(Boolean);
+app.use(cors({ origin: allowedOrigins }));
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
 
