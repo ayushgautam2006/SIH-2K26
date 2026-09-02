@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useSession } from "next-auth/react";
 import DashboardLayout from "@/app/components/dash_user/DashboardLayout";
 import { Send, MapPin, Upload, Phone, User, FileText, CheckCircle, AlertCircle, ShieldAlert } from "lucide-react";
+import { apiUrl } from "@/lib/api";
 
 const disasterOptions = [
   "Flood",
@@ -172,7 +173,7 @@ export default function SendInfoPage() {
     const mediaUrls = mediaFiles.map((item) => item.url);
 
     try {
-      const response = await fetch("http://localhost:5000/api/incidents", {
+      const response = await fetch(apiUrl("/api/incidents"), {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

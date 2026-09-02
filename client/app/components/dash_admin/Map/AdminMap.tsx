@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import dynamic from "next/dynamic";
 import { AlertTriangle, Clock3, Info, Plus, RefreshCw, Trash2 } from "lucide-react";
+import { apiUrl } from "@/lib/api";
 
 interface IncidentReport {
   _id: string;
@@ -86,7 +87,7 @@ export default function AdminMap() {
 
   const fetchIncidents = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/incidents");
+      const response = await fetch(apiUrl("/api/incidents"));
       if (!response.ok) throw new Error("Failed to load incidents");
       const data = await response.json();
       setIncidents(data);
@@ -98,7 +99,7 @@ export default function AdminMap() {
 
   const fetchResources = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/resources");
+      const response = await fetch(apiUrl("/api/resources"));
       if (!response.ok) throw new Error("Failed to load resources");
       const data = await response.json();
       setResources(data);
@@ -187,7 +188,7 @@ export default function AdminMap() {
       capacity: Number(resourceForm.capacity),
     };
 
-    const url = editingResourceId ? `http://localhost:5000/api/resources/${editingResourceId}` : "http://localhost:5000/api/resources";
+    const url = editingResourceId ? apiUrl(`/api/resources/${editingResourceId}`) : apiUrl("/api/resources");
     const method = editingResourceId ? "PUT" : "POST";
 
     try {
@@ -211,7 +212,7 @@ export default function AdminMap() {
 
   const handleDeleteResource = async (id: string) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/resources/${id}`, {
+      const response = await fetch(apiUrl(`/api/resources/${id}`), {
         method: "DELETE",
       });
       if (!response.ok) throw new Error("Failed to delete resource");

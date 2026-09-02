@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import DashboardLayout from "@/app/components/dash_user/DashboardLayout";
 import { MapPin, RefreshCw, AlertTriangle, Clock3 } from "lucide-react";
+import { apiUrl } from "@/lib/api";
 
 // Dynamically import map component with no SSR to support browser window APIs
 const MapComponent = dynamic(
@@ -47,7 +48,7 @@ export default function MapsPage() {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch("http://localhost:5000/api/incidents");
+      const response = await fetch(apiUrl("/api/incidents"));
       if (!response.ok) {
         throw new Error("Failed to load map incidents.");
       }

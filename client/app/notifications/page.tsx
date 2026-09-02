@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import DashboardLayout from "@/app/components/dash_user/DashboardLayout";
 import { Bell, User, Phone, MapPin, Calendar, FileText, RefreshCw, Eye } from "lucide-react";
+import { apiUrl } from "@/lib/api";
 
 interface IncidentReport {
   _id: string;
@@ -26,7 +27,7 @@ export default function NotificationsPage() {
     setError(null);
 
     try {
-      const response = await fetch("http://localhost:5000/api/incidents");
+      const response = await fetch(apiUrl("/api/incidents"));
       if (!response.ok) {
         throw new Error("Failed to retrieve coordination data.");
       }
