@@ -5,8 +5,10 @@ import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import prisma from "./prisma";
 import bcrypt from "bcryptjs";
 
+const adapter = process.env.DATABASE_URL ? PrismaAdapter(prisma) : undefined;
+
 export const authOptions: AuthOptions = {
-  adapter: PrismaAdapter(prisma),
+  ...(adapter ? { adapter } : {}),
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID || "google-client-id-placeholder",
@@ -21,6 +23,10 @@ export const authOptions: AuthOptions = {
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) {
           throw new Error("Please enter your login details");
+        }
+
+        if (!process.env.DATABASE_URL) {
+          throw new Error("Database is not configured. Set DATABASE_URL in your deployment environment.");
         }
 
         const input = credentials.email.trim();
