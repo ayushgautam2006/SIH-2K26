@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { RefreshCw, Eye, AlertTriangle, MapPin, Calendar } from "lucide-react";
+import { apiUrl } from "@/lib/api";
 
 interface IncidentReport {
   _id: string;
@@ -25,7 +26,7 @@ export default function AdminImages() {
     setError(null);
 
     try {
-      const response = await fetch("http://localhost:5000/api/incidents");
+      const response = await fetch(apiUrl("/api/incidents"));
       if (!response.ok) {
         throw new Error("Failed to load images");
       }
