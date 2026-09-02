@@ -2,12 +2,12 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
-  },
+"scripts": {
+  "postinstall": "prisma generate",
+  "build": "next build",
+  "dev": "next dev",
+  "start": "next start"
+},
   "dependencies": {
     "@gsap/react": "^2.1.2",
     "@next-auth/prisma-adapter": "^1.0.7",
